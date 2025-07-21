@@ -8,6 +8,7 @@ import {
   SuiDevnetChain,
   Chain,
   SuiTestnetChain,
+  SuietWallet
 } from "@suiet/wallet-kit";
 import "@suiet/wallet-kit/style.css";
 
@@ -16,7 +17,7 @@ const supportedChains: Chain[] = [SuiDevnetChain, SuiTestnetChain];
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <WalletProvider
-      defaultWallets={[...AllDefaultWallets]}
+      defaultWallets={[...AllDefaultWallets, SuietWallet]}
       chains={supportedChains}
     >
       <App />
