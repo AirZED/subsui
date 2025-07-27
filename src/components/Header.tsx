@@ -9,17 +9,17 @@ export const Header = () => {
         <header className="w-full px-6 py-2 bg-background/95 backdrop-blur-sm border-b border-border/50">
             <div className="max-w-7xl mx-auto flex items-center justify-between">
                 {/* Logo */}
-                <img src={logo} alt="Logo" className="h-6" />
+                <img src={logo} alt="Logo" className="h-4" />
 
                 {/* Navigation */}
                 <nav className="hidden md:flex items-center space-x-8">
-                    <a href="/" className="text-foreground hover:text-primary transition-colors font-medium">
+                    <a href="/" className="text-foreground hover:text-primary transition-colors font-medium text-[.6rem]">
                         Home
                     </a>
-                    <a href="/explore" className="text-foreground hover:text-primary transition-colors font-medium">
+                    <a href="/explore" className="text-foreground hover:text-primary transition-colors font-medium text-[.6rem]">
                         Explore
                     </a>
-                    <a href="/about" className="text-foreground hover:text-primary transition-colors font-medium">
+                    <a href="/about" className="text-foreground hover:text-primary transition-colors font-medium text-[.6rem]">
                         About Us
                     </a>
                 </nav>
@@ -32,9 +32,9 @@ export const Header = () => {
 
                     <Dialog>
                         <DialogTrigger asChild>
-                            <Button className="text-white bg-brand-blue hover:bg-brand-blue-dark transition-colors flex items-center cursor-pointer rounded-[24px] px-4 py-2 text-[.9rem]">
+                            <Button className="text-white bg-brand-blue hover:bg-brand-blue-dark transition-colors flex items-center cursor-pointer rounded-[24px] px-4 py-2 text-[.6rem] h-8">
                                 Connect Wallet
-                                <Wallet className="h-4 w-4 mr-2" />
+                                <Wallet className="h-2 w-2 mr-2" />
                             </Button>
                         </DialogTrigger>
                         <DialogContent className="max-w-md">
