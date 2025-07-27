@@ -2,20 +2,14 @@ import { Search, User } from "lucide-react";
 import { Button } from "@components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@components/ui/dialog";
 import { WalletConnect } from "./WalletConnect";
+import logo from "@assets/logo.png";
 
 export const Header = () => {
     return (
         <header className="w-full px-6 py-4 bg-background/95 backdrop-blur-sm border-b border-border/50">
             <div className="max-w-7xl mx-auto flex items-center justify-between">
                 {/* Logo */}
-                <div className="flex items-center space-x-2">
-                    <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-                        <span className="text-white font-bold text-lg">S</span>
-                    </div>
-                    <span className="text-2xl font-bold text-foreground">
-                        Sub<span className="text-primary">Sui</span>
-                    </span>
-                </div>
+                <img src={logo} alt="Logo" className="h-8" />
 
                 {/* Navigation */}
                 <nav className="hidden md:flex items-center space-x-8">
