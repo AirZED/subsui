@@ -59,7 +59,7 @@
 
 /* Custom utility classes */
 .text-gradient {
-  background: linear-gradient(90deg, purple, blue, red);
+  background: linear-gradient(90deg, #330066, #660055);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -119,5 +119,9 @@
 
   .bg-brand-blue {
     background-color: hsl(var(--color-brand-blue));
+  }
+
+  .text-brand-blue {
+    color: hsl(var(--color-brand-blue));
   }
 }

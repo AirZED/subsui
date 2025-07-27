@@ -20,7 +20,7 @@ const wallets = [
 
 export const WalletConnect = () => {
     return (
-        <div className="space-y-4 py-4">
+        <div className="space-y-4 py-4 bg-white">
             {wallets.map((wallet) => (
                 <Button
                     key={wallet.name}
