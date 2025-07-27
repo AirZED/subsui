@@ -1,6 +1,55 @@
 @import "tailwindcss";
 
+@theme {
+  /* Custom font family */
+  --font-custom: "Poppins", sans-serif;
 
+  /* Brand colors using HSL format */
+  --color-brand-purple: 262 83% 58%;
+  --color-brand-purple-dark: 262 83% 48%;
+  --color-brand-purple-light: 262 83% 68%;
+
+  /* Semantic colors for light mode */
+  --color-background: 0 0% 100%;
+  --color-foreground: 222.2 84% 4.9%;
+  --color-card: 0 0% 100%;
+  --color-card-foreground: 222.2 84% 4.9%;
+  --color-popover: 0 0% 100%;
+  --color-popover-foreground: 222.2 84% 4.9%;
+  --color-primary: 262 83% 58%;
+  --color-primary-foreground: 0 0% 100%;
+  --color-secondary: 210 40% 96.1%;
+  --color-secondary-foreground: 222.2 47.4% 11.2%;
+  --color-muted: 210 40% 96.1%;
+  --color-muted-foreground: 215.4 16.3% 46.9%;
+  --color-accent: 262 83% 58%;
+  --color-accent-foreground: 0 0% 100%;
+  --color-destructive: 0 84.2% 60.2%;
+  --color-destructive-foreground: 210 40% 98%;
+  --color-border: 214.3 31.8% 91.4%;
+  --color-input: 214.3 31.8% 91.4%;
+  --color-ring: 262 83% 58%;
+
+  /* Sidebar colors */
+  --color-sidebar-background: 0 0% 98%;
+  --color-sidebar-foreground: 240 5.3% 26.1%;
+  --color-sidebar-primary: 240 5.9% 10%;
+  --color-sidebar-primary-foreground: 0 0% 98%;
+  --color-sidebar-accent: 240 4.8% 95.9%;
+  --color-sidebar-accent-foreground: 240 5.9% 10%;
+  --color-sidebar-border: 220 13% 91%;
+  --color-sidebar-ring: 217.2 91.2% 59.8%;
+
+  /* Custom gradients */
+  --gradient-hero: linear-gradient(135deg, hsl(262 83% 58% / 0.1), hsl(280 100% 70% / 0.1));
+  --gradient-primary: linear-gradient(135deg, hsl(262 83% 58%), hsl(280 100% 70%));
+  --gradient-card: linear-gradient(135deg, hsl(262 83% 58% / 0.05), hsl(280 100% 70% / 0.05));
+
+  /* Border radius */
+  --radius: 0.5rem;
+}
+
+/* Custom utility classes */
 .text-gradient {
   background: linear-gradient(90deg, purple, blue, red);
   -webkit-background-clip: text;
@@ -9,9 +58,54 @@
 }
 
 .font-custom {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-custom);
 }
-.ant-modal-content{
-  background-color: #101030;
 
+.ant-modal-content {
+  background-color: #101030;
+}
+
+/* Dark mode overrides */
+.dark {
+  --color-background: 222.2 84% 4.9%;
+  --color-foreground: 210 40% 98%;
+  --color-card: 222.2 84% 4.9%;
+  --color-card-foreground: 210 40% 98%;
+  --color-popover: 222.2 84% 4.9%;
+  --color-popover-foreground: 210 40% 98%;
+  --color-primary: 210 40% 98%;
+  --color-primary-foreground: 222.2 47.4% 11.2%;
+  --color-secondary: 217.2 32.6% 17.5%;
+  --color-secondary-foreground: 210 40% 98%;
+  --color-muted: 217.2 32.6% 17.5%;
+  --color-muted-foreground: 215 20.2% 65.1%;
+  --color-accent: 217.2 32.6% 17.5%;
+  --color-accent-foreground: 210 40% 98%;
+  --color-destructive: 0 62.8% 30.6%;
+  --color-destructive-foreground: 210 40% 98%;
+  --color-border: 217.2 32.6% 17.5%;
+  --color-input: 217.2 32.6% 17.5%;
+  --color-ring: 212.7 26.8% 83.9%;
+  --color-sidebar-background: 240 5.9% 10%;
+  --color-sidebar-foreground: 240 4.8% 95.9%;
+  --color-sidebar-primary: 224.3 76.3% 48%;
+  --color-sidebar-primary-foreground: 0 0% 100%;
+  --color-sidebar-accent: 240 3.7% 15.9%;
+  --color-sidebar-accent-foreground: 240 4.8% 95.9%;
+  --color-sidebar-border: 240 3.7% 15.9%;
+  --color-sidebar-ring: 217.2 91.2% 59.8%;
+}
+
+@layer utilities {
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .bg-gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .bg-gradient-card {
+    background: var(--gradient-card);
+  }
 }

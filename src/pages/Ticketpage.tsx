@@ -3,12 +3,14 @@ import Nav from "../atoms/Nav";
 import { FaRegImage } from "react-icons/fa6";
 import { FaLocationDot } from "react-icons/fa6";
 import Button from "../atoms/Buttons";
-import DatePicker from "react-datepicker";
+// import DatePicker from "react-datepicker";
 import { LuCalendarDays } from "react-icons/lu";
-import "react-datepicker/dist/react-datepicker.css";
-import { SMART_CONTRACT_ADDRESS } from "../utils/sui.config";
+// import "react-datepicker/dist/react-datepicker.css";
+import { SMART_CONTRACT_ADDRESS } from "../lib/sui.config";
 import { Transaction } from "@mysten/sui/transactions";
 import { useWallet } from "@suiet/wallet-kit";
+import { Calendar } from "@components/ui/calendar";
+
 
 const TicketPage = () => {
   const wallet = useWallet();
@@ -127,13 +129,16 @@ const TicketPage = () => {
                   <p className="text-[1rem]">Start Date</p>
                 </div>
 
+                <Calendar />
+
+                {/* 
                 <DatePicker
                   className="text-[1rem] px-4 py-1 flex-1"
                   selected={startDate}
                   onChange={(date) => setStartDate(date as Date)}
                   showTimeSelect
                   dateFormat="Pp"
-                />
+                /> */}
               </div>
               <div className="flex gap-4 items-center justify-start bg-[#010131] ">
                 <div className="flex gap-2 text-black bg-[#00ffff] px-4 py-2 w-[30%]">
@@ -141,13 +146,16 @@ const TicketPage = () => {
                   <p className="text-[1rem]">End Date</p>
                 </div>
 
-                <DatePicker
+                <Calendar />
+
+
+                {/* <DatePicker
                   className="text-[1rem] px-4 py-1 flex-1"
                   selected={endDate}
                   onChange={(date) => setEndDate(date as Date)}
                   showTimeSelect
                   dateFormat="Pp"
-                />
+                /> */}
               </div>
             </div>
           </div>
