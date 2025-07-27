@@ -2,7 +2,7 @@
 
 @theme {
   /* Custom font family */
-  --font-custom: "Poppins", sans-serif;
+  --font-custom: "Geist", sans-serif;
 
   /* Brand colors using HSL format */
   --color-brand-blue: 270 100% 20%;
@@ -50,6 +50,11 @@
 
   /* Border radius */
   --radius: 0.5rem;
+}
+
+
+* {
+  font-family: var(--font-custom);
 }
 
 /* Custom utility classes */
