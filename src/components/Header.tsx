@@ -1,4 +1,4 @@
-import { Search, User } from "lucide-react";
+import { Search, Wallet } from "lucide-react";
 import { Button } from "@components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@components/ui/dialog";
 import { WalletConnect } from "./WalletConnect";
@@ -6,10 +6,10 @@ import logo from "@assets/logo.png";
 
 export const Header = () => {
     return (
-        <header className="w-full px-6 py-4 bg-background/95 backdrop-blur-sm border-b border-border/50">
+        <header className="w-full px-6 py-2 bg-background/95 backdrop-blur-sm border-b border-border/50">
             <div className="max-w-7xl mx-auto flex items-center justify-between">
                 {/* Logo */}
-                <img src={logo} alt="Logo" className="h-8" />
+                <img src={logo} alt="Logo" className="h-6" />
 
                 {/* Navigation */}
                 <nav className="hidden md:flex items-center space-x-8">
@@ -32,9 +32,9 @@ export const Header = () => {
 
                     <Dialog>
                         <DialogTrigger asChild>
-                            <Button className="bg-gradient-primary hover:opacity-90 transition-opacity">
-                                <User className="h-4 w-4 mr-2" />
+                            <Button className="text-white bg-brand-blue hover:bg-brand-blue-dark transition-colors flex items-center cursor-pointer rounded-[24px] px-4 py-2 text-[.9rem]">
                                 Connect Wallet
+                                <Wallet className="h-4 w-4 mr-2" />
                             </Button>
                         </DialogTrigger>
                         <DialogContent className="max-w-md">
