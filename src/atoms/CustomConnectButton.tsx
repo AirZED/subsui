@@ -133,7 +133,7 @@ const CustomConnectButton = ({ text, icon }: { text?: string, icon?: React.React
           onClick={handleConnect}
           size="lg"
           children={<>{text || "Connect Wallet"}{icon || <Wallet className="h-2 w-2 mr-2" />}</>}
-          className="text-white bg-brand-blue hover:bg-brand-blue-dark transition-colors flex items-center cursor-pointer rounded-[24px] px-4 py-2 text-[.8rem] h-10"
+          className="text-white bg-brand-blue hover:bg-brand-blue-dark transition-colors flex items-center cursor-pointer rounded-[24px] px-4 py-2 text-[1.2rem] h-10"
         />
 
 

@@ -10,10 +10,10 @@ const Home = () => {
     const { connected } = useWallet();
 
     return (
-        <div className="min-h-screen bg-white relative overflow-hidden pt-[6rem]">
+        <div className="min-h-screen bg-white relative overflow-hidden pt-[6rem] z-2">
 
             <div
-                className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-[90rem] h-[800px] rounded-full opacity-60 blur-3xl"
+                className=" absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-[90rem] h-[800px] rounded-full opacity-60 blur-3xl -z-10"
                 style={{
                     background: 'radial-gradient(circle, #330066aa 0%, transparent 70%)'
                 }}
@@ -41,17 +41,15 @@ const Home = () => {
 
                     {connected ? (
                         <Link to="/create-event">
-                            <Button className="text-white bg-brand-blue hover:bg-brand-blue-dark transition-colors flex items-center cursor-pointer rounded-[16px] px-4 py-2 text-[1rem] mx-auto cursor-pointer">
+                            <Button className="text-white bg-brand-blue hover:bg-brand-blue-dark transition-colors flex items-center cursor-pointer rounded-[16px] px-4 py-2 text-[1.2rem] mx-auto cursor-pointer">
                                 Create an event here
                                 <ArrowRight className="ml-2 h-5 w-5" />
                             </Button>
                         </Link>
                     ) : (
-
-
-                        <CustomConnectButton text="Connect Wallet to Get Started" icon={<ArrowRight className="ml-2 h-5 w-5" />} />
-
-
+                        <div className="flex justify-center">
+                            <CustomConnectButton text="Connect Wallet to Get Started" icon={<ArrowRight className=" h-5 w-5 mx-auto" />} />
+                        </div>
                     )}
                 </div>
             </main>
