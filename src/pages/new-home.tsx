@@ -1,7 +1,14 @@
 import { Button } from "@components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { useWallet } from "@suiet/wallet-kit";
+import { Link } from "react-router-dom";
+import CustomConnectButton from "../atoms/CustomConnectButton";
+
 
 const Home = () => {
+
+    const { connected } = useWallet();
+
     return (
         <div className="min-h-screen bg-white relative overflow-hidden pt-[6rem]">
 
@@ -32,13 +39,20 @@ const Home = () => {
                     </div>
 
 
+                    {connected ? (
+                        <Link to="/create-event">
+                            <Button className="text-white bg-brand-blue hover:bg-brand-blue-dark transition-colors flex items-center cursor-pointer rounded-[16px] px-4 py-2 text-[1rem] mx-auto cursor-pointer">
+                                Create an event here
+                                <ArrowRight className="ml-2 h-5 w-5" />
+                            </Button>
+                        </Link>
+                    ) : (
 
-                    <Button size="lg" className="text-white bg-brand-blue hover:bg-brand-blue-dark transition-colors flex items-center cursor-pointer rounded-[16px] px-4 py-2 text-[1.2rem] mx-auto">
-                        Connect Wallet to Get Started
-                        <ArrowRight className="ml-2 h-5 w-5" />
-                    </Button>
+
+                        <CustomConnectButton text="Connect Wallet to Get Started" icon={<ArrowRight className="ml-2 h-5 w-5" />} />
 
 
+                    )}
                 </div>
             </main>
 

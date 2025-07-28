@@ -4,6 +4,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { WalletConnect } from "./WalletConnect";
 import logo from "@assets/logo.png";
 import { NavLink } from "react-router-dom";
+import CustomConnectButton from "../atoms/CustomConnectButton";
 
 export const Header = () => {
     return (
@@ -56,10 +57,7 @@ export const Header = () => {
 
                     <Dialog>
                         <DialogTrigger asChild>
-                            <Button className="text-white bg-brand-blue hover:bg-brand-blue-dark transition-colors flex items-center cursor-pointer rounded-[24px] px-4 py-2 text-[.8rem] h-10">
-                                Connect Wallet
-                                <Wallet className="h-2 w-2 mr-2" />
-                            </Button>
+                           <CustomConnectButton/>
                         </DialogTrigger>
                         <DialogContent className="max-w-md">
                             <DialogHeader>

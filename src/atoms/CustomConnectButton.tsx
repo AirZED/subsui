@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useWallet, useAccountBalance } from "@suiet/wallet-kit";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
+import { Button } from "@components/ui/button";
+import { Wallet } from "lucide-react";
 
 interface WalletModalProps {
   isOpen: boolean;
@@ -45,7 +47,7 @@ const WalletModal = ({ isOpen, onClose }: WalletModalProps) => {
   );
 };
 
-const CustomConnectButton = ({ text }: { text?: string }) => {
+const CustomConnectButton = ({ text, icon }: { text?: string, icon?: React.ReactNode }) => {
   const { connected, disconnect, select, allAvailableWallets, address } =
     useWallet();
   const { balance, isLoading } = useAccountBalance();
@@ -81,10 +83,20 @@ const CustomConnectButton = ({ text }: { text?: string }) => {
     <div className="relative">
       {connected ? (
         <div className="relative">
-          <button
+          <Button
             onClick={() => setDropdownOpen(!dropdownOpen)}
-            className="bg-[#00ffff] text-[#000022] px-6 py-3 rounded-[15px] font-bold hover:bg-[#008888] transition-all duration-300 flex items-center gap-4 font-light"
+            className="text-white bg-brand-blue hover:bg-brand-blue-dark transition-colors flex items-center cursor-pointer rounded-[16px] px-4 py-2 text-[0.8rem] mx-auto cursor-pointer"
           >
+            <span> {formatBalance()}</span>
+            <span>{formatAddress(address)}</span>
+            <MdOutlineKeyboardArrowDown />
+          </Button>
+
+          {dropdownOpen && (
+            <div className="absolute right-0 mt-2 w-48 bg-white text-black shadow-lg  rounded-[15px] overflow-hidden text-center w-full font-normal">
+              {/* <Button
+                onClick={() => {
+                  disconnect();
             <span> {formatBalance()}</span>
             <span>{formatAddress(address)}</span>
             <MdOutlineKeyboardArrowDown />
@@ -92,25 +104,39 @@ const CustomConnectButton = ({ text }: { text?: string }) => {
 
           {dropdownOpen && (
             <div className="absolute right-0 mt-2 w-48 bg-white text-black shadow-lg  rounded-[15px] overflow-hidden text-center w-full font-normal">
-              <button
+              {/* <Button
                 onClick={() => {
                   disconnect();
                   setDropdownOpen(false);
                 }}
-                className="block w-full px-4 py-3 hover:bg-gray-200 text-center"
+                size="lg"
+                className="text-white bg-brand-blue hover:bg-brand-blue-dark transition-colors flex items-center cursor-pointer rounded-[16px] px-4 py-2 text-[1.2rem] mx-auto cursor-pointer"
               >
+                Disconnect <ArrowRight className="ml-2 h-5 w-5" />
+              </Button> */}
+              <Button
+                onClick={() => {
+                  disconnect();
+                  setDropdownOpen(false);
+                }}
+                className="block w-full px-4 py-3 hover:bg-gray-200 text-center bg-white text-[0.8rem]"
+              >
+
                 Disconnect
-              </button>
+              </Button>
             </div>
           )}
         </div>
       ) : (
-        <button
+
+        <Button
           onClick={handleConnect}
-          className="bg-[#00ffff] text-[#000022] px-6 py-3  rounded-[15px] text-center hover:bg-[#008888] transition-all duration-300 font-normal"
-        >
-          {text ? text : "Connect Wallet"}
-        </button>
+          size="lg"
+          children={<>{text || "Connect Wallet"}{icon || <Wallet className="h-2 w-2 mr-2" />}</>}
+          className="text-white bg-brand-blue hover:bg-brand-blue-dark transition-colors flex items-center cursor-pointer rounded-[24px] px-4 py-2 text-[.8rem] h-10"
+        />
+
+
       )}
       <WalletModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
