@@ -28,7 +28,7 @@ const CreateEvent = () => {
     const [enableVariablePricing, setEnableVariablePricing] = useState(false);
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 p-4 pt-[6rem]">
+        <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 p-4 pt-[6rem] [&>*]:text-[#9E9E9E]">
             {/* Main Content */}
             <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
                 {/* Image Upload Section */}
@@ -44,7 +44,7 @@ const CreateEvent = () => {
 
                 {/* Event Details Section */}
                 <div className="lg:col-span-2">
-                    <div className="bg-white rounded-2xl border border-gray-200 p-8">
+                    <div className="bg-white rounded-2xl border border-gray-200 p-8 flex flex-col gap-4">
                         {/* Event Name */}
                         <div className="mb-8">
                             <input
@@ -59,7 +59,7 @@ const CreateEvent = () => {
                         </div>
 
                         {/* Date and Time */}
-                        <div className="flex gap-6 mb-8 flex">
+                        <div className="flex gap-6 flex">
                             <div className="bg-[#F5F5F5] p-4 rounded-md w-2/3 flex gap-7 ">
                                 <div className="flex flex-col items-start justify-evenly">
                                     <div className="flex items-center gap-1 ">
@@ -117,24 +117,15 @@ const CreateEvent = () => {
                         </div>
 
                         {/* Location */}
-                        <div className="mb-8">
-                            <div className="flex items-center space-x-3 mb-2">
-                                <MapPin className="w-4 h-4 text-gray-400" />
-                                <span className="text-gray-600 text-sm">
-                                    Add Event Location or Virtual Link
-                                </span>
-                            </div>
-                            <input
-                                type="text"
-                                placeholder="Enter location or virtual link"
-                                value={location}
-                                onChange={(e) => setLocation(e.target.value)}
-                                className="w-full px-0 py-2 border-none outline-none text-gray-800 placeholder-gray-400 bg-transparent border-b border-gray-200 focus:border-purple-500"
-                            />
+                        <div className="flex items-center bg-[#F5F5F5] px-4 py-2 rounded-md mb-2">
+                            <MapPin className="w-6 h-6 text-gray-400" />
+                            <Input className="border-none outline-none bg-transparent" placeholder="Add Event Location or Virtual Link" />
+
                         </div>
 
+
                         {/* Description */}
-                        <div className="mb-8">
+                        <div className="">
                             <label className="block text-gray-700 font-medium mb-3">
                                 Event Description
                             </label>
@@ -143,7 +134,7 @@ const CreateEvent = () => {
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
                                 rows={4}
-                                className="w-full p-4 border border-gray-200 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent placeholder-gray-400"
+                                className="w-full p-4 border border-gray-200 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent placeholder-gray-400"
                             />
                         </div>
 
@@ -151,91 +142,95 @@ const CreateEvent = () => {
                         <div className="space-y-6">
                             <h3 className="text-gray-700 font-medium mb-4">Event Details</h3>
 
-                            {/* Tickets */}
-                            <div className="flex items-center justify-between py-3">
-                                <div className="flex items-center space-x-3">
-                                    <DollarSign className="w-4 h-4 text-gray-400" />
-                                    <span className="text-gray-700">Tickets</span>
+
+                            <div className="bg-[#F5F5F5] [&>*]:border-b [&>*]:border-gray-300 p-4">
+                                {/* Tickets */}
+                                <div className="flex items-center justify-between py-3">
+                                    <div className="flex items-center space-x-3">
+                                        <DollarSign className="w-4 h-4 text-gray-400" />
+                                        <span className="text-gray-700">Tickets</span>
+                                    </div>
+                                    <div className="flex items-center space-x-2">
+                                        <span className="text-sm text-gray-600">Free</span>
+                                        <div
+                                            className={`w-12 h-6 rounded-full cursor-pointer transition-colors ${isTicketsFree ? "bg-purple-600" : "bg-gray-300"
+                                                }`}
+                                            onClick={() => setIsTicketsFree(!isTicketsFree)}
+                                        >
+                                            <div
+                                                className={`w-5 h-5 rounded-full bg-white shadow-md transition-transform mt-0.5 ${isTicketsFree ? "translate-x-6" : "translate-x-0.5"
+                                                    }`}
+                                            />
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="flex items-center space-x-2">
-                                    <span className="text-sm text-gray-600">Free</span>
+
+                                {/* Capacity */}
+                                <div className="flex items-center justify-between py-3">
+                                    <div className="flex items-center space-x-3">
+                                        <Users className="w-4 h-4 text-gray-400" />
+                                        <span className="text-gray-700">Capacity</span>
+                                    </div>
+                                    <div className="flex items-center space-x-2">
+                                        <span className="text-sm text-gray-600">Unlimited</span>
+                                        <div
+                                            className={`w-12 h-6 rounded-full cursor-pointer transition-colors ${isCapacityUnlimited ? "bg-purple-600" : "bg-gray-300"
+                                                }`}
+                                            onClick={() => setIsCapacityUnlimited(!isCapacityUnlimited)}
+                                        >
+                                            <div
+                                                className={`w-5 h-5 rounded-full bg-white shadow-md transition-transform mt-0.5 ${isCapacityUnlimited
+                                                    ? "translate-x-6"
+                                                    : "translate-x-0.5"
+                                                    }`}
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Enable Resale */}
+                                <div className="flex items-center justify-between py-3">
+                                    <div className="flex items-center space-x-3">
+                                        <RotateCcw className="w-4 h-4 text-gray-400" />
+                                        <span className="text-gray-700">Enable Resale</span>
+                                    </div>
                                     <div
-                                        className={`w-12 h-6 rounded-full cursor-pointer transition-colors ${isTicketsFree ? "bg-purple-600" : "bg-gray-300"
+                                        className={`w-12 h-6 rounded-full cursor-pointer transition-colors ${enableResale ? "bg-purple-600" : "bg-gray-300"
                                             }`}
-                                        onClick={() => setIsTicketsFree(!isTicketsFree)}
+                                        onClick={() => setEnableResale(!enableResale)}
                                     >
                                         <div
-                                            className={`w-5 h-5 rounded-full bg-white shadow-md transition-transform mt-0.5 ${isTicketsFree ? "translate-x-6" : "translate-x-0.5"
+                                            className={`w-5 h-5 rounded-full bg-white shadow-md transition-transform mt-0.5 ${enableResale ? "translate-x-6" : "translate-x-0.5"
                                                 }`}
                                         />
                                     </div>
                                 </div>
-                            </div>
 
-                            {/* Capacity */}
-                            <div className="flex items-center justify-between py-3">
-                                <div className="flex items-center space-x-3">
-                                    <Users className="w-4 h-4 text-gray-400" />
-                                    <span className="text-gray-700">Capacity</span>
-                                </div>
-                                <div className="flex items-center space-x-2">
-                                    <span className="text-sm text-gray-600">Unlimited</span>
-                                    <div
-                                        className={`w-12 h-6 rounded-full cursor-pointer transition-colors ${isCapacityUnlimited ? "bg-purple-600" : "bg-gray-300"
-                                            }`}
-                                        onClick={() => setIsCapacityUnlimited(!isCapacityUnlimited)}
-                                    >
+                                {/* Enable Variable Pricing */}
+                                <div className="flex items-center justify-between py-3">
+                                    <div className="flex items-center space-x-3">
+                                        <DollarSign className="w-4 h-4 text-gray-400" />
+                                        <span className="text-gray-700">Enable Variable Pricing</span>
+                                    </div>
+                                    <div className="flex items-center space-x-2">
+                                        <span className="text-sm text-gray-600">No</span>
                                         <div
-                                            className={`w-5 h-5 rounded-full bg-white shadow-md transition-transform mt-0.5 ${isCapacityUnlimited
-                                                ? "translate-x-6"
-                                                : "translate-x-0.5"
+                                            className={`w-12 h-6 rounded-full cursor-pointer transition-colors ${enableVariablePricing ? "bg-purple-600" : "bg-gray-300"
                                                 }`}
-                                        />
+                                            onClick={() =>
+                                                setEnableVariablePricing(!enableVariablePricing)
+                                            }
+                                        >
+                                            <div
+                                                className={`w-5 h-5 rounded-full bg-white shadow-md transition-transform mt-0.5 ${enableVariablePricing
+                                                    ? "translate-x-6"
+                                                    : "translate-x-0.5"
+                                                    }`}
+                                            />
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            {/* Enable Resale */}
-                            <div className="flex items-center justify-between py-3">
-                                <div className="flex items-center space-x-3">
-                                    <RotateCcw className="w-4 h-4 text-gray-400" />
-                                    <span className="text-gray-700">Enable Resale</span>
-                                </div>
-                                <div
-                                    className={`w-12 h-6 rounded-full cursor-pointer transition-colors ${enableResale ? "bg-purple-600" : "bg-gray-300"
-                                        }`}
-                                    onClick={() => setEnableResale(!enableResale)}
-                                >
-                                    <div
-                                        className={`w-5 h-5 rounded-full bg-white shadow-md transition-transform mt-0.5 ${enableResale ? "translate-x-6" : "translate-x-0.5"
-                                            }`}
-                                    />
-                                </div>
-                            </div>
-
-                            {/* Enable Variable Pricing */}
-                            <div className="flex items-center justify-between py-3">
-                                <div className="flex items-center space-x-3">
-                                    <DollarSign className="w-4 h-4 text-gray-400" />
-                                    <span className="text-gray-700">Enable Variable Pricing</span>
-                                </div>
-                                <div className="flex items-center space-x-2">
-                                    <span className="text-sm text-gray-600">No</span>
-                                    <div
-                                        className={`w-12 h-6 rounded-full cursor-pointer transition-colors ${enableVariablePricing ? "bg-purple-600" : "bg-gray-300"
-                                            }`}
-                                        onClick={() =>
-                                            setEnableVariablePricing(!enableVariablePricing)
-                                        }
-                                    >
-                                        <div
-                                            className={`w-5 h-5 rounded-full bg-white shadow-md transition-transform mt-0.5 ${enableVariablePricing
-                                                ? "translate-x-6"
-                                                : "translate-x-0.5"
-                                                }`}
-                                        />
-                                    </div>
-                                </div>
                             </div>
                         </div>
 
