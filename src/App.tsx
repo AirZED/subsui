@@ -7,6 +7,7 @@ import UpcomingEvents from "./pages/Upcoming-events.tsx";
 import EventCreated from "./pages/event-created.tsx";
 import Home from "@/pages/home.tsx"
 import { Header } from "@components/Header.tsx";
+import CreateEvent from "@pages/create-event.tsx";
 
 
 
@@ -19,7 +20,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/verify-ticket" element={<TicketVerification />} />
-        <Route path="/create-event" element={<TicketPage />} />
+        <Route path="/create-event" element={<CreateEvent />} />
         <Route path="/events/:id" element={<EventRegistrationPage />} />
         <Route path="/new-events" element={<UpcomingEvents />} />
         <Route path="/event-created" element={<EventCreated />} />
