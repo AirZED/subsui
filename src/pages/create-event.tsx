@@ -12,6 +12,8 @@ import {
 } from "lucide-react";
 import { Input } from "../components/ui/input";
 import { SlGlobe } from "react-icons/sl";
+import { FaRegEdit } from "react-icons/fa";
+
 
 
 const CreateEvent = () => {
@@ -152,16 +154,9 @@ const CreateEvent = () => {
                                     </div>
                                     <div className="flex items-center space-x-2">
                                         <span className="text-sm text-gray-600">Free</span>
-                                        <div
-                                            className={`w-12 h-6 rounded-full cursor-pointer transition-colors ${isTicketsFree ? "bg-purple-600" : "bg-gray-300"
-                                                }`}
-                                            onClick={() => setIsTicketsFree(!isTicketsFree)}
-                                        >
-                                            <div
-                                                className={`w-5 h-5 rounded-full bg-white shadow-md transition-transform mt-0.5 ${isTicketsFree ? "translate-x-6" : "translate-x-0.5"
-                                                    }`}
-                                            />
-                                        </div>
+
+                                        <FaRegEdit />
+
                                     </div>
                                 </div>
 
@@ -173,18 +168,8 @@ const CreateEvent = () => {
                                     </div>
                                     <div className="flex items-center space-x-2">
                                         <span className="text-sm text-gray-600">Unlimited</span>
-                                        <div
-                                            className={`w-12 h-6 rounded-full cursor-pointer transition-colors ${isCapacityUnlimited ? "bg-purple-600" : "bg-gray-300"
-                                                }`}
-                                            onClick={() => setIsCapacityUnlimited(!isCapacityUnlimited)}
-                                        >
-                                            <div
-                                                className={`w-5 h-5 rounded-full bg-white shadow-md transition-transform mt-0.5 ${isCapacityUnlimited
-                                                    ? "translate-x-6"
-                                                    : "translate-x-0.5"
-                                                    }`}
-                                            />
-                                        </div>
+                                        <FaRegEdit />
+
                                     </div>
                                 </div>
 
