@@ -11,6 +11,8 @@ import {
     Settings,
 } from "lucide-react";
 import { Input } from "../components/ui/input";
+import { SlGlobe } from "react-icons/sl";
+
 
 const CreateEvent = () => {
     const [eventName, setEventName] = useState("");
@@ -52,48 +54,51 @@ const CreateEvent = () => {
                                 onChange={(e) => setEventName(e.target.value)}
                                 className="w-full text-2xl font-bold text-gray-800 placeholder-gray-400 border-none outline-none bg-transparent"
                             />
+
+
                         </div>
 
                         {/* Date and Time */}
-                        <div className="flex gap-6 mb-8 flex-col">
-                            <div className=" bg-[#F5F5F5] p-4 rounded-md w-2/3 flex gap-7 ">
-                                <div className="flex items-center flex-col items-start">
+                        <div className="flex gap-6 mb-8 flex">
+                            <div className="bg-[#F5F5F5] p-4 rounded-md w-2/3 flex gap-7 ">
+                                <div className="flex flex-col items-start justify-evenly">
                                     <div className="flex items-center gap-1 ">
                                         <div className="w-2 h-2 bg-[#9E9E9E] rounded-full"></div>
                                         From
                                     </div>
                                     <div className="flex items-center gap-1">
-                                        <div className="w-2 h-2 bg-[#9E9E9E] rounded-full"></div>To
+                                        <div className="w-2 h-2 bg-[#9E9E9E] rounded-full"></div>
+                                        To
                                     </div>
                                 </div>
 
-                                <div className="border ">
-                                    <div className="flex items-center">
+                                <div className="flex flex-col items-start justify-between gap-[0.05rem]">
+                                    <div className="flex items-center gap-[0.1rem]">
                                         <Input
                                             type="text"
                                             value={fromDate}
                                             onChange={(e) => setFromDate(e.target.value)}
-                                            className="bg-[#E0E0E0] py-1 rounded-[5px] text-sm border-none outline-none focus:bg-gray-200"
+                                            className="bg-[#E0E0E0] py-1 rounded-[5px] text-[.7rem] md:text-[.8rem] border-none outline-none"
                                         />
                                         <Input
                                             type="text"
                                             value={fromTime}
                                             onChange={(e) => setFromTime(e.target.value)}
-                                            className="bg-[#E0E0E0] py-1 rounded-[5px] text-sm border-none outline-none focus:bg-gray-200"
+                                            className="bg-[#E0E0E0] py-1 rounded-[5px] text-[.7rem] md:text-[.8rem] border-none outline-none focus:bg-gray-200"
                                         />
                                     </div>
-                                    <div className="flex items-center">
+                                    <div className="flex items-center gap-[0.1rem]">
                                         <Input
                                             type="text"
                                             value={toDate}
                                             onChange={(e) => setToDate(e.target.value)}
-                                            className="bg-[#E0E0E0] rounded-[5px] text-sm border-none outline-none focus:bg-gray-200"
+                                            className="bg-[#E0E0E0] rounded-[5px] text-[.7rem] md:text-[.8rem] border-none outline-none focus:bg-gray-200"
                                         />
                                         <Input
                                             type="text"
                                             value={toTime}
                                             onChange={(e) => setToTime(e.target.value)}
-                                            className="bg-[#E0E0E0] py-1 rounded-md text-sm border-none outline-none focus:bg-gray-200"
+                                            className="bg-[#E0E0E0] py-1 rounded-[5px] text-[.7rem] md:text-[.8rem] border-none outline-none focus:bg-gray-200 "
                                         />
                                     </div>
                                 </div>
@@ -101,6 +106,7 @@ const CreateEvent = () => {
 
                             <div className="flex flex-col justify-center bg-[#F5F5F5] p-4 rounded-md w-1/3">
                                 <div className="flex items-center space-x-2 text-sm text-gray-600 mb-1">
+                                    <SlGlobe className="w-4 h-4 text-gray-400" />
                                     <span className="font-medium">Timezone</span>
                                 </div>
                                 <div className="text-sm text-gray-800 font-medium">

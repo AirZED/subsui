@@ -55,6 +55,7 @@
 
 * {
   font-family: var(--font-custom);
+  box-sizing: border-box;
 }
 
 /* Custom utility classes */
