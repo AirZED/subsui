@@ -6,6 +6,7 @@
 
   /* Brand colors using HSL format */
   --color-brand-blue: 270 100% 20%;
+  --color-brand-light-blue: 248 100% 66%;
   --color-brand-purple: 262 83% 58%;
   --color-brand-purple-dark: 262 83% 48%;
   --color-brand-purple-light: 262 83% 68%;
@@ -122,6 +123,14 @@
     background-color: hsl(var(--color-brand-blue));
   }
 
+  .bg-brand-light-blue {
+    background-color: hsl(var(--color-brand-light-blue));
+  }
+
+  .text-brand-light-blue {
+    color: hsl(var(--color-brand-light-blue));
+  }
+
   .text-brand-blue {
     color: hsl(var(--color-brand-blue));
   }
@@ -141,8 +150,8 @@
 
 .long-dashed:hover {
   background-image:
-    repeating-linear-gradient(0deg, #a855f7, #a855f7 15px, transparent 15px, transparent 25px),
-    repeating-linear-gradient(90deg, #a855f7, #a855f7 15px, transparent 15px, transparent 25px),
-    repeating-linear-gradient(180deg, #a855f7, #a855f7 15px, transparent 15px, transparent 25px),
-    repeating-linear-gradient(270deg, #a855f7, #a855f7 15px, transparent 15px, transparent 25px);
+    repeating-linear-gradient(0deg, #604EFF, #604EFF 15px, transparent 15px, transparent 25px),
+    repeating-linear-gradient(90deg, #604EFF, #604EFF 15px, transparent 15px, transparent 25px),
+    repeating-linear-gradient(180deg, #604EFF, #604EFF 15px, transparent 15px, transparent 25px),
+    repeating-linear-gradient(270deg, #604EFF, #604EFF 15px, transparent 15px, transparent 25px);
 }

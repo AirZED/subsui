@@ -30,22 +30,19 @@ const CreateEvent = () => {
     const [enableVariablePricing, setEnableVariablePricing] = useState(false);
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 p-4 pt-[6rem] [&>*]:text-[#9E9E9E]">
+        <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 p-4 pt-[6rem] [&>*]:text-[#9E9E9E] [&>*]:text-[.8rem]">
             {/* Main Content */}
             <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-4">
                 {/* Image Upload Section */}
-                {/* <div className="lg:col-span-1"> */}
                 <div className="flex-1 bg-white rounded-2xl border-0 p-8 h-80 flex flex-col items-center justify-center long-dashed transition-colors cursor-pointer group">
                     <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-purple-50 transition-colors">
-                        <Plus className="w-6 h-6 text-gray-400 group-hover:text-purple-500" />
+                        <Plus className="w-6 h-6 text-gray-400 group-hover:text-blue-500" />
                     </div>
-                    <p className="text-purple-600 font-medium mb-1">Click here</p>
+                    <p className="text-brand-light-blue font-medium mb-1">Click here</p>
                     <p className="text-gray-500 text-sm">or drag to upload image</p>
                 </div>
-                {/* </div> */}
 
                 {/* Event Details Section */}
-                {/* <div className="lg:col-span-2"> */}
                 <div className="bg-white rounded-2xl border border-gray-200 p-8 flex flex-col gap-4">
                     {/* Event Name */}
                     <input
@@ -115,30 +112,29 @@ const CreateEvent = () => {
                     </div>
 
                     {/* Location */}
-                    <div className="flex items-center bg-[#F5F5F5] px-4 py-2 rounded-md mb-2">
+                    <div className="flex items-center bg-[#F5F5F5] px-4 py-1 rounded-md">
                         <MapPin className="w-6 h-6 text-gray-400" />
                         <Input className="border-none outline-none bg-transparent" placeholder="Add Event Location or Virtual Link" />
-
                     </div>
 
 
                     {/* Description */}
-                    <div className="">
-                        <label className=" font-medium ">
+                    <div className="flex gap-1 flex-col">
+                        <label className="font-medium ">
                             Event Description
                         </label>
                         <textarea
                             placeholder="Add description here..."
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
-                            rows={4}
-                            className="w-full p-4 border border-gray-200 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent placeholder-gray-400"
+                            rows={3}
+                            className="w-full p-4 border border-gray-200 rounded-lg resize-none focus:outline-none focus:ring-1 focus:ring-gray-500 focus:border-transparent placeholder-gray-400"
                         />
                     </div>
 
                     {/* Event Details */}
-                    <div className="space-y-6">
-                        <h3 className="text-gray-700 font-medium mb-4">Event Details</h3>
+                    <div className=" flex flex-col gap-1">
+                        <h3 className="font-medium">Event Details</h3>
 
 
                         <div className="bg-[#F5F5F5] [&>*]:border-b [&>*]:border-gray-300 p-4">
@@ -216,11 +212,9 @@ const CreateEvent = () => {
                     </div>
 
                     {/* Create Event Button */}
-                    <div className="mt-8">
-                        <button className="w-full bg-purple-600 text-white py-4 rounded-xl font-medium text-lg hover:bg-purple-700 transition-colors">
-                            Create Event
-                        </button>
-                    </div>
+                    <button className="w-full bg-brand-light-blue text-white py-4 rounded-xl font-medium text-lg hover:bg-purple-700 transition-colors">
+                        Create Event
+                    </button>
                 </div>
             </div>
             {/* </div> */}
