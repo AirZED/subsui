@@ -126,3 +126,23 @@
     color: hsl(var(--color-brand-blue));
   }
 }
+
+.long-dashed {
+  /* border: 1px dashed transparent; */
+  background-image:
+    repeating-linear-gradient(0deg, #e5e7eb, #e5e7eb 15px, transparent 15px, transparent 25px),
+    repeating-linear-gradient(90deg, #e5e7eb, #e5e7eb 15px, transparent 15px, transparent 25px),
+    repeating-linear-gradient(180deg, #e5e7eb, #e5e7eb 15px, transparent 15px, transparent 25px),
+    repeating-linear-gradient(270deg, #e5e7eb, #e5e7eb 15px, transparent 15px, transparent 25px);
+  background-size: 2px 100%, 100% 2px, 2px 100%, 100% 2px;
+  background-position: 0 0, 0 0, 100% 0, 0 100%;
+  background-repeat: no-repeat;
+}
+
+.long-dashed:hover {
+  background-image:
+    repeating-linear-gradient(0deg, #a855f7, #a855f7 15px, transparent 15px, transparent 25px),
+    repeating-linear-gradient(90deg, #a855f7, #a855f7 15px, transparent 15px, transparent 25px),
+    repeating-linear-gradient(180deg, #a855f7, #a855f7 15px, transparent 15px, transparent 25px),
+    repeating-linear-gradient(270deg, #a855f7, #a855f7 15px, transparent 15px, transparent 25px);
+}
