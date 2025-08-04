@@ -40,7 +40,7 @@ export function Toaster() {
         if (toastsForPosition.length === 0) return null;
 
         return (
-          <ToastViewport key={position} position={position}>
+          <ToastViewport key={position} position={position} > 
             {toastsForPosition.map(
               ({ id, title, description, variant, icon, action, ...props }) => (
                 <Toast
