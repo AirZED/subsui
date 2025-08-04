@@ -9,6 +9,8 @@ import { SlWallet } from "react-icons/sl";
 
 import { FaCheck } from "react-icons/fa"; // Add FaCheck for save
 import { Button } from "@components/ui/button";
+import EventCreationSuccessModal from "@components/EventCreationSuccess";
+import Modal, { useModal } from "@components/portal";
 
 const CreateEvent = () => {
   const [eventName, setEventName] = useState("");
@@ -20,6 +22,10 @@ const CreateEvent = () => {
   const [description, setDescription] = useState("");
   const [enableResale, setEnableResale] = useState(false);
   const [enableVariablePricing, setEnableVariablePricing] = useState(false);
+
+  const confirmModal = useModal();
+  const infoModal = useModal();
+  const largeModal = useModal();
 
   const [ticketPrice, setTicketPrice] = useState("");
   const [capacity, setCapacity] = useState("");
@@ -264,7 +270,13 @@ const CreateEvent = () => {
           </Button>
         </div>
       </div>
-      {/* </div> */}
+
+      <Modal
+        isOpen={confirmModal.isOpen}
+        onClose={confirmModal.closeModal}
+        title={"COnfirm Action"}
+        children={<EventCreationSuccessModal />}
+      />
     </div>
   );
 };
