@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Plus, MapPin } from "lucide-react";
+import { Plus, MapPin, TicketCheck } from "lucide-react";
 import { Input } from "../components/ui/input";
 import { SlGlobe } from "react-icons/sl";
 import { FaRegEdit } from "react-icons/fa";
@@ -10,7 +10,8 @@ import { SlWallet } from "react-icons/sl";
 import { FaCheck } from "react-icons/fa"; // Add FaCheck for save
 import { Button } from "@components/ui/button";
 import EventCreationSuccessModal from "@components/EventCreationSuccess";
-import Modal, { useModal } from "@components/portal";
+import Modal, { useModal } from "@/components/modal";
+import { useToast } from "@components/ui/use-toast";
 
 const CreateEvent = () => {
   const [eventName, setEventName] = useState("");
@@ -23,14 +24,55 @@ const CreateEvent = () => {
   const [enableResale, setEnableResale] = useState(false);
   const [enableVariablePricing, setEnableVariablePricing] = useState(false);
 
-  const confirmModal = useModal();
-  const infoModal = useModal();
-  const largeModal = useModal();
-
   const [ticketPrice, setTicketPrice] = useState("");
   const [capacity, setCapacity] = useState("");
   const [editingTicketPrice, setEditingTicketPrice] = useState(false);
   const [editingCapacity, setEditingCapacity] = useState(false);
+
+  //   const successModal = useModal();
+
+  const { toast } = useToast();
+
+  // Handle form submission
+  const handleCreateEvent = async () => {
+    // Validate required fields
+    if (!eventName.trim()) {
+      //   toast({
+      //     title: "Event Created Successfully",
+      //     description: `${eventName} has been created.`,
+      //   });
+      return;
+    }
+
+    try {
+      // Simulate API call for event creation
+      console.log("Creating event with data:", {
+        eventName,
+        fromDate,
+        fromTime,
+        toDate,
+        toTime,
+        location,
+        description,
+        ticketPrice,
+        capacity,
+        enableResale,
+        enableVariablePricing,
+      });
+
+      // Open success modal
+
+      toast({
+        title: "Event Created Successfully",
+        description: `${eventName} has been created.`,
+        variant: "success",
+        icon: <TicketCheck className="text-green-500" />,
+      });
+    } catch (error) {
+      console.error("Error creating event:", error);
+      alert("Failed to create event. Please try again.");
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 p-4 pt-[6rem] [&>*]:text-gray-500 [&>*]:text-[.8rem]">
@@ -265,18 +307,25 @@ const CreateEvent = () => {
           </div>
 
           {/* Create Event Button */}
-          <Button className="w-full bg-brand-light-blue text-white py-4 rounded-xl font-medium text-lg hover:bg-purple-700 transition-colors">
+          <Button
+            onClick={handleCreateEvent}
+            className="w-full bg-brand-light-blue text-white py-4 rounded-xl font-medium text-lg hover:bg-purple-700 transition-colors"
+          >
             Create Event
           </Button>
         </div>
       </div>
 
-      <Modal
-        isOpen={confirmModal.isOpen}
-        onClose={confirmModal.closeModal}
-        title={"COnfirm Action"}
-        children={<EventCreationSuccessModal />}
-      />
+      {/* <Modal
+        isOpen={successModal.isOpen}
+        onClose={successModal.closeModal}
+        size="sm"
+        showCloseButton={false}
+        closeOnOverlayClick={false}
+        closeOnEscape={false}
+      >
+        <EventCreationSuccessModal onClose={successModal.closeModal} />
+      </Modal> */}
     </div>
   );
 };

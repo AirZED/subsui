@@ -5,13 +5,10 @@ import EventRegistrationPage from "./pages/events-page.tsx";
 import TicketVerification from "./pages/TicketVerification.js";
 import UpcomingEvents from "./pages/Upcoming-events.tsx";
 import EventCreated from "./pages/event-created.tsx";
-import Home from "@/pages/home.tsx"
+import Home from "@/pages/home.tsx";
 import { Header } from "@components/Header.tsx";
 import CreateEvent from "@pages/create-event.tsx";
-
-
-
-
+import { Toaster } from "@components/ui/toaster.tsx";
 
 const App = () => {
   return (
@@ -25,6 +22,7 @@ const App = () => {
         <Route path="/new-events" element={<UpcomingEvents />} />
         <Route path="/event-created" element={<EventCreated />} />
       </Routes>
+      <Toaster />
     </div>
   );
 };
