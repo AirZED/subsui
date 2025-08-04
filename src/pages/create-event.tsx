@@ -13,6 +13,15 @@ import {
 import { Input } from "../components/ui/input";
 import { SlGlobe } from "react-icons/sl";
 import { FaRegEdit } from "react-icons/fa";
+import { PiTicketLight } from "react-icons/pi";
+import { TbUsersGroup, TbTargetArrow } from "react-icons/tb";
+import { SlWallet } from "react-icons/sl";
+
+
+
+
+import { FaCheck } from "react-icons/fa"; // Add FaCheck for save
+
 
 
 
@@ -28,6 +37,12 @@ const CreateEvent = () => {
     const [isCapacityUnlimited, setIsCapacityUnlimited] = useState(true);
     const [enableResale, setEnableResale] = useState(false);
     const [enableVariablePricing, setEnableVariablePricing] = useState(false);
+
+    const [ticketPrice, setTicketPrice] = useState("");
+    const [capacity, setCapacity] = useState("");
+    const [editingTicketPrice, setEditingTicketPrice] = useState(false);
+    const [editingCapacity, setEditingCapacity] = useState(false);
+
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 p-4 pt-[6rem] [&>*]:text-[#9E9E9E] [&>*]:text-[.8rem]">
@@ -137,47 +152,93 @@ const CreateEvent = () => {
                         <h3 className="font-medium">Event Details</h3>
 
 
-                        <div className="bg-[#F5F5F5] [&>*]:border-b [&>*]:border-gray-300 p-4">
+                        <div className="bg-[#F5F5F5] p-4">
+
                             {/* Tickets */}
                             <div className="flex items-center justify-between py-3">
                                 <div className="flex items-center space-x-3">
-                                    <DollarSign className="w-4 h-4 text-gray-400" />
-                                    <span className="text-gray-700">Tickets</span>
+                                    <PiTicketLight className="text-[1.2rem] text-gray-400" />
+                                    <span className="">Ticket Price</span>
                                 </div>
                                 <div className="flex items-center space-x-2">
-                                    <span className="text-sm text-gray-600">Free</span>
-
-                                    <FaRegEdit />
-
+                                    {editingTicketPrice ? (
+                                        <div className="flex items-center space-x-1">
+                                            <Input
+                                                type="text"
+                                                value={ticketPrice}
+                                                onChange={(e) => setTicketPrice(e.target.value)}
+                                                className="w-20 text-sm border border-gray-300 rounded px-2 py-1"
+                                                placeholder="0.00"
+                                            />
+                                            <span className="text-sm text-gray-500">SUI</span>
+                                            <FaCheck
+                                                className="cursor-pointer text-green-500"
+                                                onClick={() => setEditingTicketPrice(false)}
+                                            />
+                                        </div>
+                                    ) : (
+                                        <>
+                                            <span className="text-sm">{ticketPrice ? `${ticketPrice} SUI` : "Free"}</span>
+                                            <FaRegEdit
+                                                className="text-[1.2rem] text-gray-400 cursor-pointer"
+                                                onClick={() => setEditingTicketPrice(true)}
+                                            />
+                                        </>
+                                    )}
                                 </div>
                             </div>
 
                             {/* Capacity */}
                             <div className="flex items-center justify-between py-3">
                                 <div className="flex items-center space-x-3">
-                                    <Users className="w-4 h-4 text-gray-400" />
-                                    <span className="text-gray-700">Capacity</span>
+                                    <TbUsersGroup className="text-[1.2rem] text-gray-400" />
+                                    <span className="">Capacity</span>
                                 </div>
                                 <div className="flex items-center space-x-2">
-                                    <span className="text-sm text-gray-600">Unlimited</span>
-                                    <FaRegEdit />
-
+                                    {editingCapacity ? (
+                                        <div className="flex items-center space-x-1">
+                                            <Input
+                                                type="number"
+                                                value={capacity}
+                                                onChange={(e) => setCapacity(e.target.value)}
+                                                className="w-20 text-sm border border-gray-300 rounded px-2 py-1"
+                                                placeholder="Unlimited"
+                                            />
+                                            <FaCheck
+                                                className="cursor-pointer text-green-500"
+                                                onClick={() => setEditingCapacity(false)}
+                                            />
+                                        </div>
+                                    ) : (
+                                        <>
+                                            <span className="text-sm">{capacity ? capacity : "Unlimited"}</span>
+                                            <FaRegEdit
+                                                className="text-[1.2rem] text-gray-400 cursor-pointer"
+                                                onClick={() => setEditingCapacity(true)}
+                                            />
+                                        </>
+                                    )}
                                 </div>
                             </div>
+
+                            {/* Tickets */}
+
+                            {/* Capacity */}
+
 
                             {/* Enable Resale */}
                             <div className="flex items-center justify-between py-3">
                                 <div className="flex items-center space-x-3">
-                                    <RotateCcw className="w-4 h-4 text-gray-400" />
-                                    <span className="text-gray-700">Enable Resale</span>
+                                    <TbTargetArrow className="text-[1.2rem] text-gray-400" />
+                                    <span className="">Enable Resale</span>
                                 </div>
                                 <div
-                                    className={`w-12 h-6 rounded-full cursor-pointer transition-colors ${enableResale ? "bg-purple-600" : "bg-gray-300"
+                                    className={`w-9 h-5 rounded-full cursor-pointer transition-colors ${enableResale ? "bg-purple-600" : "bg-gray-300"
                                         }`}
                                     onClick={() => setEnableResale(!enableResale)}
                                 >
                                     <div
-                                        className={`w-5 h-5 rounded-full bg-white shadow-md transition-transform mt-0.5 ${enableResale ? "translate-x-6" : "translate-x-0.5"
+                                        className={`w-4 h-4 rounded-full bg-white shadow-md transition-transform mt-0.5 ${enableResale ? "translate-x-4.5" : "translate-x-0.5"
                                             }`}
                                     />
                                 </div>
@@ -186,21 +247,21 @@ const CreateEvent = () => {
                             {/* Enable Variable Pricing */}
                             <div className="flex items-center justify-between py-3">
                                 <div className="flex items-center space-x-3">
-                                    <DollarSign className="w-4 h-4 text-gray-400" />
-                                    <span className="text-gray-700">Enable Variable Pricing</span>
+                                    <SlWallet className="text-[1.2rem] text-gray-400 " />
+                                    <span className="">Enable Variable Pricing</span>
                                 </div>
                                 <div className="flex items-center space-x-2">
-                                    <span className="text-sm text-gray-600">No</span>
+                                    <span className="text-sm">No</span>
                                     <div
-                                        className={`w-12 h-6 rounded-full cursor-pointer transition-colors ${enableVariablePricing ? "bg-purple-600" : "bg-gray-300"
+                                        className={`w-9 h-5 rounded-full cursor-pointer transition-colors ${enableVariablePricing ? "bg-purple-600" : "bg-gray-300"
                                             }`}
                                         onClick={() =>
                                             setEnableVariablePricing(!enableVariablePricing)
                                         }
                                     >
                                         <div
-                                            className={`w-5 h-5 rounded-full bg-white shadow-md transition-transform mt-0.5 ${enableVariablePricing
-                                                ? "translate-x-6"
+                                            className={`w-4 h-4 rounded-full bg-white shadow-md transition-transform mt-0.5 ${enableVariablePricing
+                                                ? "translate-x-4.5"
                                                 : "translate-x-0.5"
                                                 }`}
                                         />
