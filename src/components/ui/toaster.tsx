@@ -8,43 +8,70 @@ import {
   ToastViewport,
 } from "@components/ui/toast";
 
-type ToastPosition =
-  | "top-left"
-  | "top-center"
-  | "top-right"
-  | "bottom-left"
-  | "bottom-center"
-  | "bottom-right";
+// type ToastPosition =
+//   | "top-left"
+//   | "top-center"
+//   | "top-right"
+//   | "bottom-left"
+//   | "bottom-center"
+//   | "bottom-right";
 
-export function Toaster({
-  position = "bottom-right",
-}: {
-  position?: ToastPosition;
-}) {
+export function Toaster() {
   const { toasts } = useToast();
 
-  const positionClasses = {
-    "top-left": "top-5 left-5",
-    "top-center": "top-5 left-1/2 -translate-x-1/2",
-    "top-right": "top-5 right-5",
-    "bottom-left": "bottom-5 left-5",
-    "bottom-center": "bottom-5 left-1/2 -translate-x-1/2",
-    "bottom-right": "bottom-5 right-5",
-  };
+  const positions = [
+    "top-left",
+    "top-center",
+    "top-right",
+    "bottom-left",
+    "bottom-center",
+    "bottom-right",
+  ] as const;
 
   return (
     <ToastProvider>
-      {toasts.map(({ id, title, variant, description, action, ...props }) => (
-        <Toast key={id} {...props}>
-          <div className="flex-1 grid gap-1">
-            {title && <ToastTitle>{title}</ToastTitle>}
-            {description && <ToastDescription>{description}</ToastDescription>}
-          </div>
-          {action}
-          <ToastClose />
-        </Toast>
-      ))}
-      <ToastViewport className={positionClasses[position]} />
+      {positions.map((position) => {
+        const toastsForPosition = toasts.filter(
+          (toast) =>
+            toast.position === position ||
+            (!toast.position && position === "bottom-right")
+        );
+
+        if (toastsForPosition.length === 0) return null;
+
+        return (
+          <ToastViewport key={position} position={position}>
+            {toastsForPosition.map(
+              ({ id, title, description, variant, icon, action, ...props }) => (
+                <Toast
+                  key={id}
+                  variant={variant}
+                  {...props}
+                  className="flex flex-col items-center gap-6"
+                >
+                  <div className="flex items-center gap-2">
+                    {icon && <div className="">{icon}</div>}
+                    <div className="">
+                      {title && (
+                        <ToastTitle className="text-[1rem] font-semibold">
+                          {title}
+                        </ToastTitle>
+                      )}
+                      {description && (
+                        <ToastDescription className="text-[0.6rem] font-light">
+                          {description}
+                        </ToastDescription>
+                      )}
+                    </div>
+                  </div>
+                  {action}
+                  <ToastClose />
+                </Toast>
+              )
+            )}
+          </ToastViewport>
+        );
+      })}
     </ToastProvider>
   );
 }

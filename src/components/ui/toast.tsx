@@ -7,14 +7,36 @@ import { cn } from "@lib/utils";
 
 const ToastProvider = ToastPrimitives.Provider;
 
+type ToastViewportProps = React.ComponentPropsWithoutRef<
+  typeof ToastPrimitives.Viewport
+> & {
+  position?:
+    | "top-left"
+    | "top-center"
+    | "top-right"
+    | "bottom-left"
+    | "bottom-center"
+    | "bottom-right";
+};
+
+const positionClasses = {
+  "top-left": "top-5 left-5",
+  "top-center": "top-5 left-1/2 -translate-x-1/2",
+  "top-right": "top-5 right-5",
+  "bottom-left": "bottom-5 left-5",
+  "bottom-center": "bottom-5 left-1/2 -translate-x-1/2",
+  "bottom-right": "bottom-5 right-5",
+};
+
 const ToastViewport = React.forwardRef<
   React.ElementRef<typeof ToastPrimitives.Viewport>,
-  React.ComponentPropsWithoutRef<typeof ToastPrimitives.Viewport>
->(({ className, ...props }, ref) => (
+  ToastViewportProps
+>(({ className, position = "bottom-right", ...props }, ref) => (
   <ToastPrimitives.Viewport
     ref={ref}
     className={cn(
-      "fixed top-0 z-[100] flex max-h-screen w-full flex-col-reverse p-4 sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px]",
+      "fixed z-[100000000] flex max-h-screen w-full flex-col p-4 md:max-w-[420px]",
+      positionClasses[position],
       className
     )}
     {...props}

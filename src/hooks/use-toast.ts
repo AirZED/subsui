@@ -14,8 +14,11 @@ type ToasterToast = ToastProps & {
     description?: React.ReactNode;
     action?: ToastActionElement;
     variant?: "default" | "success" | "error" | "info" | "destructive";
-    icon: React.ReactElement
+    position?: "top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right";
+    icon: React.ReactElement;
 };
+
+
 
 const actionTypes = {
     ADD_TOAST: "ADD_TOAST",
@@ -139,17 +142,19 @@ function dispatch(action: Action) {
     })
 }
 
-type Toast = Omit<ToasterToast, "id">
 
-function toast({ ...props }: Toast) {
-    const id = genId()
+type ToastInput = Omit<ToasterToast, "id">;
+
+function toast({ ...props }: ToastInput) {
+    const id = genId();
 
     const update = (props: ToasterToast) =>
         dispatch({
             type: "UPDATE_TOAST",
             toast: { ...props, id },
-        })
-    const dismiss = () => dispatch({ type: "DISMISS_TOAST", toastId: id })
+        });
+
+    const dismiss = () => dispatch({ type: "DISMISS_TOAST", toastId: id });
 
     dispatch({
         type: "ADD_TOAST",
@@ -158,16 +163,12 @@ function toast({ ...props }: Toast) {
             id,
             open: true,
             onOpenChange: (open) => {
-                if (!open) dismiss()
+                if (!open) dismiss();
             },
         },
-    })
+    });
 
-    return {
-        id: id,
-        dismiss,
-        update,
-    }
+    return { id, dismiss, update };
 }
 
 function useToast() {

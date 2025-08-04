@@ -12,6 +12,7 @@ import { Button } from "@components/ui/button";
 import EventCreationSuccessModal from "@components/EventCreationSuccess";
 import Modal, { useModal } from "@/components/modal";
 import { useToast } from "@components/ui/use-toast";
+import { ImCheckmark } from "react-icons/im";
 
 const CreateEvent = () => {
   const [eventName, setEventName] = useState("");
@@ -37,10 +38,13 @@ const CreateEvent = () => {
   const handleCreateEvent = async () => {
     // Validate required fields
     if (!eventName.trim()) {
-      //   toast({
-      //     title: "Event Created Successfully",
-      //     description: `${eventName} has been created.`,
-      //   });
+      toast({
+        title: "Enter event name first",
+        description: `${eventName} has been created.`,
+        variant: "error",
+        icon: <TicketCheck className="text-green-500" />,
+        position: "top-right",
+      });
       return;
     }
 
@@ -60,13 +64,32 @@ const CreateEvent = () => {
         enableVariablePricing,
       });
 
-      // Open success modal
-
       toast({
-        title: "Event Created Successfully",
-        description: `${eventName} has been created.`,
+        title: "Event Creation Successful",
+        description: `Registrations will be closed as soon as your set limit is reached`,
         variant: "success",
-        icon: <TicketCheck className="text-green-500" />,
+        position: "top-right",
+        icon: (
+          <div className="w-8 h-8 bg-[#009900] rounded-full flex items-center justify-center">
+            <ImCheckmark className="text-white text-[0.9rem]" />
+          </div>
+        ),
+        action: (
+          <div className="flex items-center justify-evenly gap-2 w-full">
+            <Button
+              className="rounded-[1.5rem] bg-[#604EFF] text-white cursor-pointer text-[.7rem] px-8 hover:bg-white hover:border hover:border-[#604EFF] hover:text-[#604EFF]"
+              size="sm"
+            >
+              Share Link
+            </Button>
+            <Button
+              className="rounded-[1.5rem] bg-[#E8E5FF] text-[#6B6B6B] hover:bg-[#604EFF] hover:text-white cursor-pointer text-[.7rem] px-8"
+              size="sm"
+            >
+              Explore Events
+            </Button>
+          </div>
+        ),
       });
     } catch (error) {
       console.error("Error creating event:", error);
