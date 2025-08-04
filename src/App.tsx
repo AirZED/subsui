@@ -9,6 +9,7 @@ import Home from "@/pages/home.tsx";
 import { Header } from "@components/Header.tsx";
 import CreateEvent from "@pages/create-event.tsx";
 import { Toaster } from "@components/ui/toaster.tsx";
+import EventsPage from "./pages/new-event.tsx";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/events/:id" element={<EventRegistrationPage />} />
         <Route path="/new-events" element={<UpcomingEvents />} />
         <Route path="/event-created" element={<EventCreated />} />
+        <Route path="/event" element={<EventsPage />} />
       </Routes>
       <Toaster />
     </div>

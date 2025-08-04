@@ -51,52 +51,10 @@ const EventsPage: React.FC = () => {
     return (
         <div className="min-h-screen bg-gray-50">
             {/* Header */}
-            <header className="bg-white border-b border-gray-200 px-6 py-4">
-                <div className="flex items-center justify-between max-w-7xl mx-auto">
-                    {/* Left side - Logo and Navigation */}
-                    <div className="flex items-center space-x-8">
-                        {/* Logo */}
-                        <div className="flex items-center">
-                            <div className="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
-                                <div className="w-5 h-5 bg-white rounded-sm transform rotate-45"></div>
-                            </div>
-                        </div>
-
-                        {/* Navigation */}
-                        <nav className="flex items-center space-x-6">
-                            <div className="flex items-center space-x-2 text-purple-600 font-medium">
-                                <Calendar className="w-5 h-5" />
-                                <span>Events</span>
-                            </div>
-                            <div className="flex items-center space-x-2 text-gray-600">
-                                <div className="w-5 h-5 grid grid-cols-2 gap-0.5">
-                                    <div className="w-2 h-2 bg-gray-400 rounded-sm"></div>
-                                    <div className="w-2 h-2 bg-gray-400 rounded-sm"></div>
-                                    <div className="w-2 h-2 bg-gray-400 rounded-sm"></div>
-                                    <div className="w-2 h-2 bg-gray-400 rounded-sm"></div>
-                                </div>
-                                <span>Explore</span>
-                            </div>
-                        </nav>
-                    </div>
-
-                    {/* Right side - Actions */}
-                    <div className="flex items-center space-x-4">
-                        <Search className="w-5 h-5 text-gray-600 cursor-pointer" />
-                        <button className="flex items-center space-x-2 bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors">
-                            <Plus className="w-4 h-4" />
-                            <span>Create Event</span>
-                        </button>
-                        <Bell className="w-5 h-5 text-gray-600 cursor-pointer" />
-                        <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center text-white text-sm font-medium">
-                            0x
-                        </div>
-                    </div>
-                </div>
-            </header>
+        
 
             {/* Main Content */}
-            <main className="max-w-7xl mx-auto px-6 py-8">
+            <main className="max-w-7xl mx-auto px-6 py-8 mt-[6rem]">
                 {/* Page Title and Description */}
                 <div className="mb-8">
                     <h1 className="text-3xl font-bold text-gray-900 mb-4">Events</h1>
