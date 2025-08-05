@@ -339,16 +339,7 @@ const CreateEvent = () => {
         </div>
       </div>
 
-      {/* <Modal
-        isOpen={successModal.isOpen}
-        onClose={successModal.closeModal}
-        size="sm"
-        showCloseButton={false}
-        closeOnOverlayClick={false}
-        closeOnEscape={false}
-      >
-        <EventCreationSuccessModal onClose={successModal.closeModal} />
-      </Modal> */}
+     
     </div>
   );
 };

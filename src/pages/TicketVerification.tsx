@@ -1,5 +1,5 @@
 import Nav from "../atoms/Nav.tsx";
-import Buttons from "../atoms/Buttons.tsx";
+import { Button } from "@components/ui/button.tsx";
 const TicketVerification = () => {
   return (
     <div>
@@ -34,7 +34,7 @@ const TicketVerification = () => {
               className="h-[3rem] text-[#000000] font-semibold rounded-[5px]
                                                                                  pl-2 outline-[#000022] outline-2"
             />
-            <Buttons name="Verify Ticket" />
+            <Button name="Verify Ticket" />
           </form>
         </div>
       </div>
