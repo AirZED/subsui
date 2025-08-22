@@ -47,7 +47,13 @@ const WalletModal = ({ isOpen, onClose }: WalletModalProps) => {
   );
 };
 
-const CustomConnectButton = ({ text, icon }: { text?: string, icon?: React.ReactNode }) => {
+const CustomConnectButton = ({
+  text,
+  icon,
+}: {
+  text?: string;
+  icon?: React.ReactNode;
+}) => {
   const { connected, disconnect, select, allAvailableWallets, address } =
     useWallet();
   const { balance, isLoading } = useAccountBalance();
@@ -121,22 +127,23 @@ const CustomConnectButton = ({ text, icon }: { text?: string, icon?: React.React
                 }}
                 className="block w-full px-4 py-3 hover:bg-gray-200 text-center bg-white text-[0.8rem]"
               >
-
                 Disconnect
               </Button>
             </div>
           )}
         </div>
       ) : (
-
         <Button
           onClick={handleConnect}
           size="lg"
-          children={<>{text || "Connect Wallet"}{icon || <Wallet className="h-2 w-2 mr-2" />}</>}
+          children={
+            <>
+              {text || "Connect Wallet"}
+              {icon || <Wallet className="h-2 w-2 mr-2" />}
+            </>
+          }
           className="text-white bg-brand-blue hover:bg-brand-blue-dark transition-colors flex items-center cursor-pointer rounded-[24px] px-4 py-2 text-[1.2rem] h-10"
         />
-
-
       )}
       <WalletModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>

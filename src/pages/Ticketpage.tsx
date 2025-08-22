@@ -2,7 +2,7 @@ import { FormEvent, useState } from "react";
 import Nav from "../atoms/Nav";
 import { FaRegImage } from "react-icons/fa6";
 import { FaLocationDot } from "react-icons/fa6";
-import Button from "../atoms/Buttons";
+import { Button } from "@components/ui/button";
 // import DatePicker from "react-datepicker";
 import { LuCalendarDays } from "react-icons/lu";
 // import "react-datepicker/dist/react-datepicker.css";
@@ -10,7 +10,6 @@ import { SMART_CONTRACT_ADDRESS } from "../lib/sui.config";
 import { Transaction } from "@mysten/sui/transactions";
 import { useWallet } from "@suiet/wallet-kit";
 import { Calendar } from "@components/ui/calendar";
-
 
 const TicketPage = () => {
   const wallet = useWallet();
@@ -148,7 +147,6 @@ const TicketPage = () => {
 
                 <Calendar />
 
-
                 {/* <DatePicker
                   className="text-[1rem] px-4 py-1 flex-1"
                   selected={endDate}
@@ -240,7 +238,7 @@ const TicketPage = () => {
           </label>
 
           <Button name="Create Event" type="submit" />
-          <Button name="Create Event" link="/event-created" />
+          {/* <Button name="Create Event" link="/event-created" /> */}
         </form>
       </div>
     </div>

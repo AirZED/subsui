@@ -82,24 +82,24 @@ const EventsPage: React.FC = () => {
         </div>
 
         {/* Tabs */}
-        <div className="mb-8">
-          <div className="flex space-x-8 border-b border-gray-200">
+        <div className="mb-8 space-x-8 border-b border-gray-200">
+          <div className="flex bg-[#E6E6E6B2] p-1 w-fit rounded-md">
             <button
               onClick={() => setActiveTab("upcoming")}
-              className={`pb-4 px-1 text-sm font-medium border-b-2 transition-colors ${
+              className={`py-2 w-[10rem] text-sm font-medium transition-colors rounded-md cursor-pointer ${
                 activeTab === "upcoming"
-                  ? "border-purple-600 text-purple-600"
-                  : "border-transparent text-gray-500 hover:text-gray-700"
+                  ? "bg-white "
+                  : "bg-transparent text-gray-500 hover:text-gray-700"
               }`}
             >
               Upcoming
             </button>
             <button
               onClick={() => setActiveTab("past")}
-              className={`pb-4 px-1 text-sm font-medium border-b-2 transition-colors ${
+              className={`px-1 w-[10rem] text-sm font-medium transition-colors rounded-md cursor-pointer ${
                 activeTab === "past"
-                  ? "border-purple-600 text-purple-600"
-                  : "border-transparent text-gray-500 hover:text-gray-700"
+                  ? "bg-white "
+                  : "bg-transparent text-gray-500 hover:text-gray-700"
               }`}
             >
               Past
@@ -149,36 +149,36 @@ const EventsPage: React.FC = () => {
 
                     {/* Attendees */}
                     <div className="flex items-center space-x-2 mb-4">
-                      <div className="flex -space-x-2">
+                      <div className="flex -space-x-4">
                         {event.attendees.map((_, index) => (
                           <div
                             key={index}
-                            className="w-8 h-8 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full border-2 border-white flex items-center justify-center text-white text-xs font-medium"
+                            className="w-7 h-7 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full border-2 border-white flex items-center justify-center text-white text-xs font-medium"
                           >
                             {String.fromCharCode(65 + index)}
                           </div>
                         ))}
-                        <div className="w-8 h-8 bg-gray-200 rounded-full border-2 border-white flex items-center justify-center text-gray-600 text-xs">
+                        <div className="w-7 h-7 bg-gray-200 rounded-full border-2 border-white flex items-center justify-center text-gray-600 text-xs">
                           +2
                         </div>
                       </div>
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="flex items-center space-x-4">
+                    <div className="flex items-center space-x-2">
                       {event.isRegistered ? (
-                        <Button className="bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center space-x-2">
+                        <Button className="bg-[#009900] text-white px-4 py-2 rounded-[16px] text-sm font-medium flex items-center space-x-2 hover:bg-[#009900]">
                           <Calendar className="w-4 h-4" />
-                          <span>Registered</span>
+                          <span className="text-[1rem]">Registered</span>
                         </Button>
                       ) : (
-                        <Button className="bg-gray-900 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-800 transition-colors">
+                        <Button className="bg-gray-900 text-white px-4 py-2 rounded-[16px] text-sm font-medium hover:bg-gray-800 transition-colors cursor-pointer">
                           Register Now
                         </Button>
                       )}
                       <Button
                         onClick={setShowEventDetail.bind(null, event)}
-                        className="text-gray-600 text-sm hover:text-gray-800 transition-colors"
+                        className="text-gray-600 bg-transparent rounded-[16px] text-[0.9rem] hover:text-gray-800 transition-colors cursor-pointer"
                       >
                         See Details
                       </Button>

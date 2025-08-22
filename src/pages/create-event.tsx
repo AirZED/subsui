@@ -6,11 +6,8 @@ import { FaRegEdit } from "react-icons/fa";
 import { PiTicketLight } from "react-icons/pi";
 import { TbUsersGroup, TbTargetArrow } from "react-icons/tb";
 import { SlWallet } from "react-icons/sl";
-
-import { FaCheck } from "react-icons/fa"; // Add FaCheck for save
+import { FaCheck } from "react-icons/fa";
 import { Button } from "@components/ui/button";
-import EventCreationSuccessModal from "@components/EventCreationSuccess";
-import Modal, { useModal } from "@/components/modal";
 import { useToast } from "@components/ui/use-toast";
 import { ImCheckmark } from "react-icons/im";
 
@@ -338,8 +335,6 @@ const CreateEvent = () => {
           </Button>
         </div>
       </div>
-
-     
     </div>
   );
 };

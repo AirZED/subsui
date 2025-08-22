@@ -94,6 +94,7 @@ const UpcomingEvents: React.FC = () => {
                   <p>{new Date(event.time).toLocaleTimeString()}</p>
                 </span>
                 <span className="flex items-center gap-2 mt-2">
+                  z
                   <FaLocationDot className="text-[#00ffff]" />
                   <p>{event.location}</p>
                 </span>

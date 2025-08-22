@@ -8,7 +8,7 @@ import {
   SuiDevnetChain,
   Chain,
   SuiTestnetChain,
-  SuietWallet
+  SuietWallet,
 } from "@suiet/wallet-kit";
 import "@suiet/wallet-kit/style.css";
 import { BrowserRouter } from "react-router-dom";
@@ -18,14 +18,12 @@ const supportedChains: Chain[] = [SuiDevnetChain, SuiTestnetChain];
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
-
-    <WalletProvider
-      defaultWallets={[...AllDefaultWallets, SuietWallet]}
-      chains={supportedChains}
-    >
-      <App />
+      <WalletProvider
+        defaultWallets={[...AllDefaultWallets, SuietWallet]}
+        chains={supportedChains}
+      >
+        <App />
       </WalletProvider>
     </BrowserRouter>
-
   </StrictMode>
 );
